@@ -1,0 +1,45 @@
+{% extends  "base.html"%}
+{% block start %}
+
+    <style>table, th, td {
+        border: 1px solid;
+      }</style>
+    <h1>This is Index Page </h1>
+    <a href="/contact/">Contact</a>
+    <a href="/about/">About</a>
+
+
+    <h1 class="cen">This template is return by Django server</h1>
+    <hr>
+    <table class="container">
+        <tr>
+          <th>S. NO</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Can vote</th>
+        </tr>
+        {% for people in peoples %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{people.name}}</td>
+          <td>{{people.age}}</td>
+          <td  {% if people.age <= 18 %} style="background:red"   {% endif%}>
+             {% if people.age >= 18 %}
+            👍
+            {% else %}
+            👎
+            {%endif%}
+             </td>
+        </tr>
+        {% endfor %}
+      </table>
+
+<p> {% if "cucumber" in vegetables %}
+    Yes Available
+    {% else%}
+    Not Available
+  {%endif%}
+
+</p>
+
+{% endblock %}
